@@ -1,0 +1,201 @@
+CREATE TABLE tblUsuario
+(diUsuario bigint not null unique,
+NomUsuario nvarchar(30) not null,
+ApeUsusrio nvarchar(30) not null,
+idUsuario nvarchar(10) not null unique,
+passUsuario nvarchar(10) not null,
+EmailUsuario nvarchar(30) not null,
+rl_tipo nvarchar(30) not null,
+primary key (diUsuario));
+
+
+CREATE TABLE tblUsuario
+(diUsuario bigint not null unique,
+NomUsuario nvarchar(30) not null,
+ApeUsusrio nvarchar(30) not null,
+idUsuario nvarchar(10) not null unique,
+passUsuario nvarchar(10) not null,
+EmailUsuario nvarchar(30) not null,
+rl_id int not null,
+primary key (diUsuario));
+
+
+CREATE TABLE tblRoles
+(rl_id int not null unique identity,
+rl_tipo varchar(30) not null unique,
+primary key (rl_tipo));
+
+
+CREATE TABLE tblTiendas
+(ti_id int not null unique,
+ti_Nombre nvarchar(30) not null,
+ti_sucursal nvarchar(30) not null,
+ti_direccion nvarchar (30) not null,
+ti_telefono bigint not null,
+ti_Email nvarchar (60) not null,
+ti_Ciudad nvarchar (30) not null,
+primary key (ti_id));
+
+
+CREATE TABLE tblClientes
+(cli_id bigint not null unique,
+cli_nombre nvarchar(30) not null,
+cli_apellido nvarchar(30) not null,
+cli_direccion nvarchar(30) not null,
+cli_telefono bigint  not null,
+cli_email nvarchar(30,
+primary key (cli_id));
+
+
+CREATE TABLE tblEntradas
+(en_numero int not null unique identity,
+pro_id bigint not null,
+pr_serial nvarchar(5) not null,
+ft_no int not null,
+primary key (en_numero));
+
+
+CREATE TABLE tblProveedores
+(pro_id bigint not null unique,
+pro_nombre nvarchar(30) not null,
+pro_direccion nvarchar(30) not null,
+pro_email nvarchar(50) not null,
+pro_telefono bigint not null,
+primary key (pro_id));
+
+
+CREATE TABLE tblProductos
+(pr_serial nvarchar(5) not null unique,
+pr_tipo nvarchar(30) not null,
+pr_modelo nvarchar(30) not null,
+pr_lote int not null,
+pr_detalle nvarchar(100) not null,
+pr_valor bigint not null,
+ti_id int not null,
+primary key (pr_serial));
+
+
+CREATE TABLE tblFactura
+(ft_no int not null unique,
+ft_fecha bigint not null,
+ft_detalle nvarchar(80) not null,
+ft_valor bigint not null,
+ft_tipo nvarchar(15) not null,
+primary key (ft_no));
+
+CREATE TABLE tblVentasxclientes
+(cv_no int not null unique identity,
+cli_id bigint not null,
+pr_serial nvarchar(5) not null,
+diUsuario bigint not null,
+ft_no int not null,
+primary key (cv_no));
+
+
+
+
+
+
+
+
+CREATE TABLE tblUsuario
+(
+    diUsuario bigint not null unique,
+NomUsuario nvarchar(30) not null,
+ApeUsusrio nvarchar(30) not null,
+idUsuario nvarchar(10) not null unique,
+passUsuario nvarchar(10) not null,
+EmailUsuario nvarchar(30) not null,
+rl_tipo nvarchar(30) not null,
+primary key (diUsuario));
+
+FOREIGN  KEY(rl_tipo) REFERENCES tblRoles(rl_tipo) on UPDATE CASCADE);
+
+
+CREATE TABLE tblClientes
+(cli_id bigint not null unique,
+cli_nombre nvarchar(30) not null,
+cli_apellido nvarchar(30) not null,
+cli_direccion nvarchar(30) not null,
+cli_telefono bigint  not null,
+cli_email nvarchar(30),
+primary key (cli_id));
+
+
+CREATE TABLE tblRoles
+(rl_id int not null unique AUTO_INCREMENT,
+rl_tipo varchar(30) not null unique,
+primary key (rl_tipo));
+
+CREATE TABLE tblTiendas
+(ti_id int not null unique,
+ti_Nombre nvarchar(30) not null,
+ti_sucursal nvarchar(30) not null,
+ti_direccion nvarchar (30) not null,
+ti_telefono bigint not null,
+ti_Email nvarchar (60) not null,
+ti_Ciudad nvarchar (30) not null,
+primary key (ti_id));
+
+CREATE TABLE tblEntradas
+(en_numero int not null unique AUTO_INCREMENT,
+pro_id bigint not null,
+pr_serial nvarchar(5) not null,
+ft_no int not null,
+primary key (en_numero));
+
+CREATE TABLE tblVentasxclientes
+(cv_no int not null unique AUTO_INCREMENT,
+cli_id bigint not null,
+pr_serial nvarchar(5) not null,
+diUsuario bigint not null,
+ft_no int not null,
+primary key (cv_no));
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+CREATE TABLE `pedidos` (
+  `id` int(11) PRIMARY KEY,
+  `idcliente` int(11) FOREIGN KEY NOT NULL,
+  `idproducto` int(11) NOT NULL);
+
+
+=====================================================
+
+
+CREACION DE LAS TABLAS SIN LLAVE FORANEA(Para crear la relaciòn por Interfax Grafica - Primero crear
+un indice en la variable rl:tipo y despues relacionar y colocar eliminar en cascada y actualizar en cascada).
+
+CREATE TABLE `tblRoles` (
+  `rl_id` int(3) AUTO_INCREMENT UNIQUE  NOT NULL,
+  `rl_tipo` nvarchar(30) NOT NULL ,
+ PRIMARY KEY (rl_tipo));
+
+
+
+CREATE TABLE tblClientes(
+clubigint(11) NOT NULL UNIQUE,
+NomUsuario nvarchar(30) NOT NULL,
+ApeUsusrio nvarchar(30) NOT NULL,
+idUsuario nvarchar(10) NOT NULL UNIQUE,
+passUsuario nvarchar(10) NOT NULL,
+EmailUsuario nvarchar(30) NOT NULL,
+rl_tipo nvarchar(30) NOT NULL,
+PRIMARY KEY (diUsuario));
+
+
+
+
+
+
